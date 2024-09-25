@@ -2,6 +2,7 @@
 const nextConfig = {
     output: "export",  // <=== enables static exports
     basePath: "/Ferdinand-Pinner.github.io",
+    assetPrefix: "/Ferdinand-Pinner.github.io",
     reactStrictMode: true,
     images: {
         unoptimized: true,
