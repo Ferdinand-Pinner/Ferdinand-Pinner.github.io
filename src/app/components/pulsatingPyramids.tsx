@@ -68,7 +68,10 @@ const updatePyramids = (
   }
 };
 
-const calculateGridDimensions = (viewport: any, size: number) => {
+const calculateGridDimensions = (
+  viewport: { width: number; height: number },
+  size: number
+) => {
   const rows = Math.ceil(viewport.height / size);
   const cols = Math.ceil(viewport.width / size);
   return { rows, cols };
