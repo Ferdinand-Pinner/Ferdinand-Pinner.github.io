@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./styles/globals.css";
+import PulsatingTriangles from "./components/pulsatingPyramids";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +27,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
+        style={{ position: "relative", overflow: "hidden" }} // Ensure the body is positioned relative for background control
       >
-        {children}
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            zIndex: -1, // Ensures it's behind all content
+            overflow: "hidden",
+          }}
+        >
+          <PulsatingTriangles />
+        </div>
+
+        {/* Main Content */}
+        <div style={{ position: "relative", zIndex: 1 }}>{children}</div>
       </body>
     </html>
   );
