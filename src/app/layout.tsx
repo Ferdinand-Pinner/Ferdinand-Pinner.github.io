@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ position: "relative", overflow: "hidden" }} // Ensure the body is positioned relative for background control
       >
         <div
