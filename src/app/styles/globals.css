@@ -27,10 +27,10 @@ body {
 }
 
 .mask-text-british {
-  background-image: url("/src/app/Flag_of_the_United_Kingdom.png"); /* Union Jack flag */
-  background-size: contain; /* Ensure the entire image fits within the text */
-  background-repeat: no-repeat; /* Prevent repeating the image */
-  background-position: center; /* Center the background image */
+  background-image: url("/src/app/Flag_of_the_United_Kingdom.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
