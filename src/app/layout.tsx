@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ position: "relative", overflow: "hidden" }} // Ensure the body is positioned relative for background control
+        style={{ position: "relative" }}
       >
         <div
           style={{
@@ -37,14 +37,13 @@ export default function RootLayout({
             left: 0,
             width: "100vw",
             height: "100vh",
-            zIndex: -1, // Ensures it's behind all content
+            zIndex: -1,
             overflow: "hidden",
           }}
         >
           <PulsatingTriangles />
         </div>
 
-        {/* Main Content */}
         <div style={{ position: "relative", zIndex: 1 }}>{children}</div>
       </body>
     </html>

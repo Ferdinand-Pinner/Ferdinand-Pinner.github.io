@@ -25,3 +25,13 @@ body {
     text-wrap: balance;
   }
 }
+
+.mask-text-british {
+  background-image: url("/src/app/Flag_of_the_United_Kingdom.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
