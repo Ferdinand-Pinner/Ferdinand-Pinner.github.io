@@ -1,11 +1,42 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const imageUrls = [
+    "/images/ferdi+artmuseum.jpg",
+    "/images/ferdi+dandy_square.jpg",
+    "/images/ferdi+squinting+giraffes.jpg",
+    "/images/Ferdinand-arms-outstreched.jpg",
+    "/images/ferdinand-twothumbsup.jpg",
+  ];
+
+  const [randomImage, setRandomImage] = useState("");
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    setRandomImage(imageUrls[randomIndex]);
+  }, []);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="p-4 flex flex-col gap-8 row-start-2 items-center sm:items-start bg-opacity-80 bg-black rounded border">
         <div className="text-center max-w-2xl mx-auto px-4">
-          <h1 className="text-5xl font-bold  mb-4">
-            You have arrived at the webpage of a certain Ferdinand Pinner
-          </h1>
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 gap-4">
+            <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
+              <Image
+                src={randomImage}
+                alt="Randomly selected"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-bold text-right sm:text-left">
+              Welcome to Ferdinand Pinner!
+            </h1>
+          </div>
           <p className="text-base mb-4">
             I&apos;m just a
             <span
