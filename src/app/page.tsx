@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main className="p-4 flex flex-col gap-8 row-start-2 items-center sm:items-start bg-opacity-80 bg-black rounded border">
         <div className="text-center max-w-2xl mx-auto px-4">
           <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 gap-4">
@@ -33,9 +33,14 @@ export default function Home() {
               />
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-bold text-right sm:text-left">
-              Welcome to Ferdinand Pinner!
-            </h1>
+            <div className="flex flex-col items-center sm:items-start">
+              <h1 className="text-3xl sm:text-5xl font-bold text-center sm:text-left">
+                welcome to the ferdinand
+              </h1>
+              <h2 className="text-xl sm:text-2xl font-medium mt-2 text-center sm:text-left">
+                contact: ferdinand.pinner@gmail.com
+              </h2>
+            </div>
           </div>
           <p className="text-base mb-4">
             I&apos;m just a
@@ -76,7 +81,16 @@ export default function Home() {
           </p>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+      <footer className="p-4 flex flex-col gap-8 row-start-3 items-center sm:items-start bg-opacity-90 bg-black rounded border">
+        <a
+          href="https://github.com/Ferdinand-Pinner/Ferdinand-Pinner.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rainbow-link text-lg hover:text-gray-400 transition-colors duration-300"
+        >
+          Click here to go to the repo on github!
+        </a>
+      </footer>
     </div>
   );
 }
