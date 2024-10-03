@@ -20,9 +20,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 min-w-0 items-center justify-items-center min-h-screen gap-4 pb-20 mx-16 font-[family-name:var(--font-geist-sans)] max-w-100">
-      <main className="p-4 flex flex-col gap-8 row-start-2 items-center sm:items-start bg-opacity-80 bg-black rounded border">
-        <div className="text-center max-w-2xl mx-auto px-4">
+    <div className="grid grid-cols-1 min-w-0 items-center justify-items-center min-h-screen gap-4 pb-20 mx-16 font-[family-name:var(--font-geist-sans)]">
+      <main className="p-2 flex flex-col gap-8 row-start-2 sm:items-start bg-opacity-75 bg-black rounded border">
+        <div className="text-center max-w-2xl mx-auto">
           <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 gap-4">
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
               <Image
