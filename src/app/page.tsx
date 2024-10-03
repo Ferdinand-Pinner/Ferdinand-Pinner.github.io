@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 mx-8 font-[family-name:var(--font-geist-sans)] max-w-90">
+    <div className="grid grid-cols-1 min-w-0 items-center justify-items-center min-h-screen gap-4 pb-20 mx-16 font-[family-name:var(--font-geist-sans)] max-w-100">
       <main className="p-4 flex flex-col gap-8 row-start-2 items-center sm:items-start bg-opacity-80 bg-black rounded border">
         <div className="text-center max-w-2xl mx-auto px-4">
           <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 gap-4">
