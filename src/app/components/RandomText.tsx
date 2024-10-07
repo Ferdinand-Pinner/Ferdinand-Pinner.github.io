@@ -5,10 +5,6 @@ interface ParagraphsData {
   paragraphs: string[];
 }
 
-interface RandomTextProps {
-  delay: number;
-}
-
 const calculateFontSize = (text: string | null) => {
   if (!text) return "1rem";
 
@@ -22,7 +18,11 @@ const calculateFontSize = (text: string | null) => {
   }
 };
 
-const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
+const getRandomInterval = (min: number, max: number) => {
+  return Math.random() * (max - min) * 1000 + min * 1000;
+};
+
+const RandomText: React.FC = () => {
   const [currentText, setCurrentText] = useState<string | null>(null);
   const [fadeClass, setFadeClass] = useState<string>("fade-in");
 
@@ -47,17 +47,16 @@ const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
       setTimeout(() => {
         fetchRandomParagraph();
         setFadeClass("fade-in");
-      }, 1000);
+      }, 800);
     };
 
-    const timeoutId = setTimeout(() => {
+    swapTextWithFade();
+    const intervalId = setInterval(() => {
       swapTextWithFade();
-      const intervalId = setInterval(swapTextWithFade, 7000);
-      return () => clearInterval(intervalId);
-    }, delay);
+    }, getRandomInterval(13, 19));
 
-    return () => clearTimeout(timeoutId);
-  }, [delay]);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className={`random-text-container ${fadeClass}`} style={{ fontSize }}>
