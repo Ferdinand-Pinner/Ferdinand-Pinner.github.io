@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./fade.css";
 
+// Define the type for the JSON data structure
 interface ParagraphsData {
   paragraphs: string[];
 }
 
-const RandomText: React.FC = () => {
+interface RandomTextProps {
+  delay: number; // Delay to stagger start times
+}
+
+const getRandomDuration = () => {
+  // Random duration between 10 and 15 seconds (in milliseconds)
+  return Math.floor(Math.random() * 5000) + 10000; // 10000ms to 15000ms
+};
+
+const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
   const [currentText, setCurrentText] = useState<string | null>(null);
   const [fadeClass, setFadeClass] = useState<string>("fade-in");
 
@@ -17,39 +27,37 @@ const RandomText: React.FC = () => {
 
         const randomIndex = Math.floor(Math.random() * data.paragraphs.length);
         setCurrentText(data.paragraphs[randomIndex]);
-
-        setFadeClass("fade-in");
-
-        setTimeout(() => {
-          setFadeClass("");
-        }, 1000);
       } catch (error) {
         console.error("Error loading random paragraphs:", error);
       }
     };
 
-    fetchRandomParagraph();
-    const interval = setInterval(fetchRandomParagraph, 3000);
+    const swapTextWithFade = () => {
+      const randomDuration = getRandomDuration(); // Get a random duration
 
-    return () => clearInterval(interval);
-  }, []);
+      // Trigger fade-out animation
+      setFadeClass("fade-out");
 
-  const calculateFontSize = (text: string | null) => {
-    if (!text) return "1rem"; // Default size for no text
-    const length = text.length;
+      // Wait for fade-out to finish (matches CSS fade duration)
+      setTimeout(() => {
+        fetchRandomParagraph(); // Change the text
+        setFadeClass("fade-in"); // Trigger fade-in animation
 
-    if (length < 50) return "2rem"; // Large text for shorter paragraphs
-    if (length < 100) return "1.5rem"; // Medium size for moderate-length text
-    return "1rem"; // Smaller size for longer text
-  };
+        // After the fade-in, wait for the random duration before triggering the next change
+        setTimeout(swapTextWithFade, randomDuration); // Recursively set next text change
+      }, 1000); // Wait for the fade-out (1s animation duration)
+    };
+
+    // Initial delay to stagger start times
+    const timeoutId = setTimeout(() => {
+      swapTextWithFade(); // Start the first text swap with fade
+    }, delay);
+
+    return () => clearTimeout(timeoutId); // Cleanup on unmount
+  }, [delay]);
 
   return (
-    <div
-      className={`random-text-container ${fadeClass}`}
-      style={{ fontSize: calculateFontSize(currentText) }}
-    >
-      {currentText}
-    </div>
+    <div className={`random-text-container ${fadeClass}`}>{currentText}</div>
   );
 };
 

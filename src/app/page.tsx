@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import RandomText from "./components/RandomText";
+import RandomTextsContainer from "./components/RandomTextsContainer";
 
 export default function Home() {
   const imageUrls = [
@@ -44,10 +44,7 @@ export default function Home() {
             </div>
             <h3>The truth is in the connections between</h3>
           </div>
-          <RandomText />
-          <RandomText />
-          <RandomText />
-          <RandomText />
+          <RandomTextsContainer />
         </div>
       </main>
       <footer className="p-4 flex flex-col gap-8 row-start-3 items-center sm:items-start bg-opacity-90 bg-black rounded border">
