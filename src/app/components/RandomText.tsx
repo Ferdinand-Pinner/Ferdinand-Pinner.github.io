@@ -13,6 +13,10 @@ const calculateFontSize = (text: string | null) => {
     return "2rem";
   } else if (length <= 100) {
     return "1.5rem";
+  } else if (length <= 150) {
+    return "1.25rem";
+  } else if (length <= 200) {
+    return "1.1rem";
   } else {
     return "1rem";
   }
