@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import RandomText from "./components/RandomText";
 
 export default function Home() {
   const imageUrls = [
@@ -41,44 +42,12 @@ export default function Home() {
                 contact: ferdinand.pinner@gmail.com
               </h2>
             </div>
+            <h3>The truth is in the connections between</h3>
           </div>
-          <p className="text-base mb-4">
-            I&apos;m just a
-            <span
-              className="text-transparent bg-clip-text bg-center bg-cover bg-no-repeat text-xl px-2"
-              style={{
-                backgroundImage:
-                  'url("/images/Flag_of_the_United_Kingdom.svg")',
-              }}
-            >
-              British
-            </span>
-            guy making his way through life with a healthy helping of computers,
-            I could list out all my likes and loves here but that&apos;s so
-            blasé, I would never
-          </p>
-          <p className="text-base mb-4">
-            though in it&apos;s own way this is a useful page, its here as a
-            part of me online for all to see, oh how vulnerable but there
-            ain&apos;t nothing as secure as openess how can you break into
-            something that was never there?
-          </p>
-          <p className="text-base mb-4">
-            enough pointless musings that obviously have no other metaphorical
-            implications, I&apos;m here to wrench and drag out the ideas
-            encrusted into the universe, spoken by people and then put them in a
-            computer so other people, and sometimes even me, never have to think
-            about them ever again.
-          </p>
-          <p className="text-base mb-4">
-            The thing I&apos;m most serious about is having fun (I love irony)
-            while doing a little engineering, there&apos;s no point doing
-            anything if you don&apos;t enjoy it, and if you don&apos;t enjoy
-            either make doing it fun or find something else to do, luckily I
-            find myself tending to like doing it, but as everyone knows
-            throughout all the moments in their life it&apos;s never the it
-            that&apos;s the problem it&apos;s the everything else
-          </p>
+          <RandomText />
+          <RandomText />
+          <RandomText />
+          <RandomText />
         </div>
       </main>
       <footer className="p-4 flex flex-col gap-8 row-start-3 items-center sm:items-start bg-opacity-90 bg-black rounded border">
