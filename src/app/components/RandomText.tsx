@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from "react";
 import "./fade.css";
 
-// Define the type for the JSON data structure
 interface ParagraphsData {
   paragraphs: string[];
 }
 
 interface RandomTextProps {
-  delay: number; // Delay to stagger start times
+  delay: number;
 }
+
+const calculateFontSize = (text: string | null) => {
+  if (!text) return "1rem";
+
+  const length = text.length;
+  if (length <= 50) {
+    return "2rem";
+  } else if (length <= 100) {
+    return "1.5rem";
+  } else {
+    return "1rem";
+  }
+};
 
 const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
   const [currentText, setCurrentText] = useState<string | null>(null);
   const [fadeClass, setFadeClass] = useState<string>("fade-in");
+
+  const fontSize = calculateFontSize(currentText);
 
   useEffect(() => {
     const fetchRandomParagraph = async () => {
@@ -46,7 +60,9 @@ const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
   }, [delay]);
 
   return (
-    <div className={`random-text-container ${fadeClass}`}>{currentText}</div>
+    <div className={`random-text-container ${fadeClass}`} style={{ fontSize }}>
+      {currentText}
+    </div>
   );
 };
 
