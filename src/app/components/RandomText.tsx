@@ -10,11 +10,6 @@ interface RandomTextProps {
   delay: number; // Delay to stagger start times
 }
 
-const getRandomDuration = () => {
-  // Random duration between 10 and 15 seconds (in milliseconds)
-  return Math.floor(Math.random() * 5000) + 10000; // 10000ms to 15000ms
-};
-
 const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
   const [currentText, setCurrentText] = useState<string | null>(null);
   const [fadeClass, setFadeClass] = useState<string>("fade-in");
@@ -33,27 +28,21 @@ const RandomText: React.FC<RandomTextProps> = ({ delay }) => {
     };
 
     const swapTextWithFade = () => {
-      const randomDuration = getRandomDuration(); // Get a random duration
-
-      // Trigger fade-out animation
       setFadeClass("fade-out");
 
-      // Wait for fade-out to finish (matches CSS fade duration)
       setTimeout(() => {
-        fetchRandomParagraph(); // Change the text
-        setFadeClass("fade-in"); // Trigger fade-in animation
-
-        // After the fade-in, wait for the random duration before triggering the next change
-        setTimeout(swapTextWithFade, randomDuration); // Recursively set next text change
-      }, 1000); // Wait for the fade-out (1s animation duration)
+        fetchRandomParagraph();
+        setFadeClass("fade-in");
+      }, 1000);
     };
 
-    // Initial delay to stagger start times
     const timeoutId = setTimeout(() => {
-      swapTextWithFade(); // Start the first text swap with fade
+      swapTextWithFade();
+      const intervalId = setInterval(swapTextWithFade, 7000);
+      return () => clearInterval(intervalId);
     }, delay);
 
-    return () => clearTimeout(timeoutId); // Cleanup on unmount
+    return () => clearTimeout(timeoutId);
   }, [delay]);
 
   return (
